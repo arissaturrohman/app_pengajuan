@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Nasabah;
+use App\Models\Kelompok;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,6 +22,27 @@ class DatabaseSeeder extends Seeder
             'nama'      => 'Administrator',
             'username'  => 'admin',
             'password'  => Hash::make('admin'),
+        ]);
+
+        Nasabah::create([
+            'NIK'           => '123456789',
+            'nama'          => 'tes',
+            'tempat_lahir'  => 'demak',
+            'tgl_lahir'     => '2020-01-02',
+            'jk'            => 'Laki-laki',
+            'alamat'        => 'bonang demak',
+            'agama'         => 'islam',
+            'status_kawin'  => 'kawin',
+            'pekerjaan'     => 'Swasta',
+            'pengajuan'     => '2000000',
+            'kelompok'     => '1',
+        ]);
+
+        Kelompok::create([
+            'nama_kelompok' => 'mawar',
+        ]);
+        Kelompok::create([
+            'nama_kelompok' => 'melati',
         ]);
     }
 }

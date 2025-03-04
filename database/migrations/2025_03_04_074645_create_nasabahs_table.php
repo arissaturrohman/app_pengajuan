@@ -13,8 +13,19 @@ return new class extends Migration
     {
         Schema::create('nasabahs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('kelompok_id')
+                ->constrained('kelompoks')
+                ->onUpdate('cascade');
             $table->string('NIK');
             $table->string('nama');
+            $table->string('tempat_lahir');
+            $table->date('tgl_lahir');
+            $table->enum('jk',['Laki-laki','Perempuan']);
+            $table->text('alamat');
+            $table->string('agama');
+            $table->string('status_kawin');
+            $table->string('pekerjaan');
+            $table->string('pengajuan');
             $table->timestamps();
         });
     }

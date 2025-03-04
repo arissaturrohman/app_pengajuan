@@ -28,27 +28,31 @@
                         <th>Pekerjaan</th>
                         <th>Pengajuan</th>
                         <th>Realisasi</th>
+                        <th>Kelompok</th>
                         <th class="text-center"><i class="fas fa-cogs"></i></th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($nasabah as $item)
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>Edinburgh</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>61</td>
-                        <td>61</td>
-                        <td>61</td>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->NIK }}</td>
+                        <td>{{ $item->nama }}</td>
+                        <td>{{ $item->tempat_lahir }}, {{ $item->tgl_lahir }}</td>
+                        <td>{{ $item->jk }}</td>
+                        <td>{{ $item->alamat }}</td>
+                        <td>{{ $item->agama }}</td>
+                        <td>{{ $item->status_kawin }}</td>
+                        <td>{{ $item->pekerjaan }}</td>
+                        <td>{{ $item->pengajuan }}</td>
                         <td>2011/04/25</td>
+                        <td>{{ $item->kelompok->nama_kelompok }}</td>
                         <td width="15%">
                             <a href="" class="btn btn-sm btn-info"><i class="fas fa-edit"></i> edit</a>
                             <a href="" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> hapus</a>
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
