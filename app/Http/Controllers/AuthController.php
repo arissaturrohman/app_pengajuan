@@ -27,9 +27,15 @@ class AuthController extends Controller
         ];
         
         if (Auth::attempt($data)) {
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard')->with('success', 'Anda berhasil Login');
         } else {
             return redirect()->back()->with('error', 'Username / Password Salah');
         }
+    }
+
+    public function logout(){
+        Auth::logout();
+
+        return redirect()->route('login')->with('success', 'Anda berhasil Logout');
     }
 }

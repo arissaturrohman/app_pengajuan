@@ -84,7 +84,7 @@
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 
-    @section('success')        
+    @session('success')        
     <script>
         Swal.fire({
             title: "Sukses!",
@@ -92,9 +92,9 @@
             icon: "success"
         });
         </script>
-    @endsection
+    @endsession
 
-    @section('error')        
+    @session('error')        
     <script>
         Swal.fire({
             title: "Gagal!",
@@ -102,7 +102,7 @@
             icon: "error"
         });
         </script>
-    @endsection
+    @endsession
 
 </body>
 

@@ -9,7 +9,10 @@ use App\Http\Controllers\PengajuanController;
 
 // login
 Route::get('/',[AuthController::class, 'login'] )->name('login');
-Route::post('/',[AuthController::class, 'loginProses'] )->name('loginProses');
+Route::post('login',[AuthController::class, 'loginProses'] )->name('loginProses');
+
+// logout
+Route::get('logout',[AuthController::class, 'logout'] )->name('logout');
 
 Route::middleware('checkLogin')->group(function(){
     // dashboard
