@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('nasabahs', function (Blueprint $table) {
             $table->id();
-            $table->varchar('NIK');
-            $table->varchar('nama');
+            $table->string('NIK');
+            $table->string('nama');
             $table->timestamps();
         });
     }
