@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\Kelompok;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Nasabah extends Model
 {
@@ -20,7 +20,14 @@ class Nasabah extends Model
         'pengajuan',
     ];
 
-    public function kelompok(){
-        return $this->hasOne(Kelompok::class);
+    /**
+     * The roles that belong to the Nasabah
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function detail(): BelongsToMany
+    {
+        return $this->belongsToMany(DetailKelompok::class, 'detail_kelompok', 'kelompok_id', 'nasabah_id');
     }
+
 }

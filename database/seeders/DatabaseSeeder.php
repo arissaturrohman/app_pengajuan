@@ -6,6 +6,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Nasabah;
 use App\Models\Kelompok;
+use App\Models\DetailKelompok;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -35,14 +36,19 @@ class DatabaseSeeder extends Seeder
             'status_kawin'  => 'kawin',
             'pekerjaan'     => 'Swasta',
             'pengajuan'     => '2000000',
-            'kelompok'     => '1',
         ]);
 
         Kelompok::create([
             'nama_kelompok' => 'mawar',
         ]);
+
         Kelompok::create([
             'nama_kelompok' => 'melati',
+        ]);
+
+        DetailKelompok::create([
+            'kelompok_id' => '1',
+            'nasabah_id' => '1',
         ]);
     }
 }

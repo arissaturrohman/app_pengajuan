@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Nasabah;
+use App\Models\Kelompok;
 use Illuminate\Http\Request;
 
-class NasabahController extends Controller
+class DetailKelompokController extends Controller
 {
     public function index (){
         $data = [
-            "title"         => "Data Nasabah",
-            "menuNasabah"   => "active",
+            "title"         => "Detail Nasabah",
             "nasabah"       => Nasabah::get(),
+            "kelompok"       => Kelompok::get(),
         ];
         return view('nasabah/index', $data);
     }

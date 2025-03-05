@@ -13,9 +13,6 @@ return new class extends Migration
     {
         Schema::create('nasabahs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kelompok_id')
-                ->constrained('kelompoks')
-                ->onUpdate('cascade');
             $table->string('NIK');
             $table->string('nama');
             $table->string('tempat_lahir');

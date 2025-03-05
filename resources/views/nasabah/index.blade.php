@@ -35,7 +35,7 @@
                 <tbody>
                     @foreach ($nasabah as $item)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td class="text-center">{{ $loop->iteration }}</td>
                         <td>{{ $item->NIK }}</td>
                         <td>{{ $item->nama }}</td>
                         <td>{{ $item->tempat_lahir }}, {{ $item->tgl_lahir }}</td>
@@ -44,9 +44,9 @@
                         <td>{{ $item->agama }}</td>
                         <td>{{ $item->status_kawin }}</td>
                         <td>{{ $item->pekerjaan }}</td>
-                        <td>{{ $item->pengajuan }}</td>
+                        <td>{{ number_format($item->pengajuan) }}</td>
                         <td>2011/04/25</td>
-                        <td>{{ $item->kelompok->nama_kelompok }}</td>
+                        <td>{{ $item->detailkelompok->nama_kelompok }}</td>
                         <td width="15%">
                             <a href="" class="btn btn-sm btn-info"><i class="fas fa-edit"></i> edit</a>
                             <a href="" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> hapus</a>

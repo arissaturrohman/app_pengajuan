@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('kelompok_id')
                 ->constrained('kelompoks')
+                ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->foreignId('nasabah_id')
+                $table->foreignId('nasabah_id')
                 ->constrained('nasabahs')
+                ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->timestamps();
         });
