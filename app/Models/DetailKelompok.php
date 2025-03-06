@@ -3,12 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class DetailKelompok extends Model
 {
-    public function detail(): BelongsToMany
+    public function nasabah()
     {
-        return $this->belongsToMany(Kelompok::class, 'detail_kelompok', 'kelompok_id', 'nasabah_id');
+        return $this->belongsTo(Nasabah::class);
+    }
+
+    public function kelompok()
+    {
+        return $this->belongsTo(Kelompok::class);
     }
 }

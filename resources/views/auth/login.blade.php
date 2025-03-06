@@ -47,7 +47,7 @@
                                         @csrf
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user @error('username') is-invalid @enderror"
-                                                placeholder="Masukkan Username" name="username" value="{{ old('username') }}">
+                                                placeholder="Masukkan Username" name="username" value="{{ old('username') }}" autofocus>
                                                 @error('username')
                                                     <small class="text-danger">{{ $message }}</small>
                                                 @enderror

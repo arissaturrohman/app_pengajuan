@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             'username'  => 'admin',
             'password'  => Hash::make('admin'),
         ]);
-
+        
         Nasabah::create([
             'NIK'           => '123456789',
             'nama'          => 'tes',
@@ -36,19 +36,21 @@ class DatabaseSeeder extends Seeder
             'status_kawin'  => 'kawin',
             'pekerjaan'     => 'Swasta',
             'pengajuan'     => '2000000',
+            'kelompok'   => 1,
         ]);
-
+        
         Kelompok::create([
             'nama_kelompok' => 'mawar',
         ]);
-
+        
         Kelompok::create([
             'nama_kelompok' => 'melati',
         ]);
-
+        
         DetailKelompok::create([
-            'kelompok_id' => '1',
-            'nasabah_id' => '1',
+            'kelompok_id' => 1,
+            'nasabah_id' => 1,
         ]);
+
     }
 }

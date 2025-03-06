@@ -4,9 +4,10 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
         <div class="sidebar-brand-icon">
-            <i class="fas fa-dollar-sign"></i>
+            <img src="{{ asset('img/logo-dapm.png') }}" width="65%" alt="">
+            {{-- <i class="fas fa-dollar-sign"></i> --}}
         </div>
-        <div class="sidebar-brand-text mx-3">E-Pengajuan</div>
+        <div class="sidebar-brand-text mr-2">E-Pinjaman</div>
     </a>
 
     <!-- Divider -->

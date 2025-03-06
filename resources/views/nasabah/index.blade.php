@@ -9,7 +9,7 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">
-            <a href="" class="btn btn-sm btn-outline-primary">Tambah</a>
+            <a href="{{ route('nasabahCreate') }}" class="btn btn-sm btn-outline-primary">Tambah</a>
         </h6>
     </div>
     <div class="card-body">
@@ -45,10 +45,10 @@
                         <td>{{ $item->status_kawin }}</td>
                         <td>{{ $item->pekerjaan }}</td>
                         <td>{{ number_format($item->pengajuan) }}</td>
-                        <td>2011/04/25</td>
-                        <td>{{ $item->detailkelompok->kelompok_id }}</td>
+                        <td></td>
+                        <td>{{ $item->kelompok }}</td>
                         <td width="15%">
-                            <a href="" class="btn btn-sm btn-info"><i class="fas fa-edit"></i> edit</a>
+                            <a href="{{ route('nasabahEdit', $item->id) }}" class="btn btn-sm btn-info"><i class="fas fa-edit"></i> edit</a>
                             <a href="" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> hapus</a>
                         </td>
                     </tr>

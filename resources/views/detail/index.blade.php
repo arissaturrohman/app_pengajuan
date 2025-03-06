@@ -18,23 +18,19 @@
                 <thead>
                     <tr>
                         <th class="text-center" width="5%">No</th>
-                        <th>Nama Kelompok</th>
-                        <th>Jumlah Anggota</th>
-                        <th class="text-center">Detail Anggota</th>
+                        <th>Nama</th>
+                        <th>Kelompok</th>
                         <th class="text-center"><i class="fas fa-cogs"></i></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($kelompok as $item)
-                        
+                    @foreach ($detail as $item)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->nama_kelompok }}</td>
-                        <td>2</td>
-                        <td width="15%" class="text-center">
-                            <a href="" class="btn btn-sm btn-warning"><i class="fas fa-eye"></i> detail</a>
-                        </td>
-                        <td width="15%" class="text-center">
+                        <td class="text-center">{{ $loop->iteration }}</td>
+                        <td>{{ $item->nasabah->nama }}</td>
+                        <td>{{ $item->kelompok->nama_kelompok }}</td>
+                        
+                        <td width="15%">
                             <a href="" class="btn btn-sm btn-info"><i class="fas fa-edit"></i> edit</a>
                             <a href="" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> hapus</a>
                         </td>

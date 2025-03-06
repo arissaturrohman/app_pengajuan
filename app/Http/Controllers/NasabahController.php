@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Nasabah;
+use App\Models\Kelompok;
 use Illuminate\Http\Request;
 
 class NasabahController extends Controller
@@ -11,8 +12,75 @@ class NasabahController extends Controller
         $data = [
             "title"         => "Data Nasabah",
             "menuNasabah"   => "active",
-            "nasabah"       => Nasabah::get(),
+            "nasabah"       => Nasabah::with('kelompok')->get(),
+            "kelompok"      => Kelompok::get(),
         ];
         return view('nasabah/index', $data);
+    }
+    
+    public function create(){
+        $data = [
+            'title' => 'Tambah Data Nasabah',
+            "menuNasabah"   => "active",
+            "kelompok"      => Kelompok::get(),
+        ];
+        return view('nasabah/create', $data);
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'nik'                => 'required',
+            'nama'               => 'required',
+            'tempat_lahir'       => 'required',
+            'tgl_lahir'          => 'required',
+            'jk'                 => 'required',
+            'alamat'             => 'required',
+            'agama'              => 'required',
+            'status_kawin'       => 'required',
+            'pekerjaan'          => 'required',
+            'pengajuan'          => 'required',
+            'kelompok'          => 'required',
+        ],
+     [      'nik.required'                => 'NIK Tidak Boleh Kosong',
+            'nama.required'               => 'Nama Tidak Boleh Kosong',
+            'tempat_lahir.required'       => 'Tempat Lahir Tidak Boleh Kosong',
+            'tgl_lahir.required'          => 'Tanggal Lahir Tidak Boleh Kosong',
+            'jk.required'                 => 'Jenis Kelamin Belum Dipilih',
+            'alamat.required'             => 'Alamat Tidak Boleh Kosong',
+            'agama.required'              => 'Agama Belum Dipilih',
+            'status_kawin.required'       => 'Status Kawin Belum Dipilih',
+            'pekerjaan.required'          => 'Pekerjaan Tidak Boleh Kosong',
+            'pengajuan.required'          => 'Pengajuan Tidak Boleh Kosong',
+            'kelompok.required'           => 'Kelompok Belum Dipilih',
+
+    ]);
+
+    $nasabah = new Nasabah;
+    $nasabah->nik           = $request->nik;
+    $nasabah->nama          = $request->nama;
+    $nasabah->tempat_lahir  = $request->tempat_lahir;
+    $nasabah->tgl_lahir     = $request->tgl_lahir;
+    $nasabah->jk            = $request->jk;
+    $nasabah->alamat        = $request->alamat;
+    $nasabah->agama         = $request->agama;
+    $nasabah->status_kawin  = $request->status_kawin;
+    $nasabah->pekerjaan     = $request->pekerjaan;
+    $nasabah->pekerjaan     = $request->pekerjaan;
+    $nasabah->pengajuan     = $request->pengajuan;
+    $nasabah->kelompok      = $request->kelompok;
+    $nasabah->save();
+
+    return redirect()->route('nasabah')->with('success', 'Data Berhasil Ditambahkan');
+
+    }
+
+    public function edit($id){
+        $data = [
+            'title' => 'Edit Data Nasabah',
+            "menuNasabah"   => "active",
+            "nasabah"      => Nasabah::with('kelompok')->findOrFail($id),
+            "kelompok"      => Kelompok::get(),
+        ];
+        return view('nasabah/edit', $data);
     }
 }

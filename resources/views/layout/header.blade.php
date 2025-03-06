@@ -19,7 +19,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <link rel="shortcut icon" href="{{ asset('img/logo.jpg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('img/logo-dapm.png') }}" type="image/x-icon">
 
     <!-- Custom styles for this page -->
     <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
