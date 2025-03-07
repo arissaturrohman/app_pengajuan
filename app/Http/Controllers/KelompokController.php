@@ -11,7 +11,7 @@ class KelompokController extends Controller
         $data = [
             "title"  => "Data Kelompok",
             "menuKelompok" => "active",
-            "kelompok"       => Kelompok::with('nasabah')->get(),
+            "kelompok"       => Kelompok::get(),
         ];
         return view('kelompok/index', $data);
     }

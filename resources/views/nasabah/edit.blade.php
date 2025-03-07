@@ -15,7 +15,7 @@
                 </h6>
             </div>
             <div class="card-body">
-                <form action="{{ route('nasabahStore') }}" method="POST">
+                <form action="{{ route('nasabahUpdate', $nasabah->id) }}" method="POST">
                     @csrf
                     <div class="form-group row">
                       <label for="nik" class="col-sm-3 col-form-label">NIK</label>
@@ -92,11 +92,11 @@
                         <div class="col-sm-9">
                             <select name="agama" id="agama" class="form-control">
                                 <option selected disabled>--Pilih--</option>
-                                <option value="Islam">Islam</option>
-                                <option value="Katolik">Katolik</option>
-                                <option value="Kristen">Kristen</option>
-                                <option value="Hindu">Hindu</option>
-                                <option value="Buddha">Buddha</option>
+                                <option value="Islam" {{ $nasabah->agama == "Islam" ? 'selected' : '' }}>Islam</option>
+                                <option value="Katolik" {{ $nasabah->agama == "Katolik" ? 'selected' : '' }}>Katolik</option>
+                                <option value="Kristen" {{ $nasabah->agama == "Kristen" ? 'selected' : '' }}>Kristen</option>
+                                <option value="Hindu" {{ $nasabah->agama == "Hindu" ? 'selected' : '' }}>Hindu</option>
+                                <option value="Buddha" {{ $nasabah->agama == "Buddha" ? 'selected' : '' }}>Buddha</option>
                             </select>
                             @error('agama')
                             <small class="text-danger">
@@ -110,10 +110,10 @@
                         <div class="col-sm-9">
                             <select name="status_kawin" id="status_kawin" class="form-control">
                                 <option selected disabled>--Pilih--</option>
-                                <option value="Belum Kawin">Belum Kawin</option>
-                                <option value="Kawin">Kawin</option>
-                                <option value="Cerai Hidup">Cerai Hidup</option>
-                                <option value="Cerai Mati">Cerai Mati</option>
+                                <option value="Belum Kawin"{{ $nasabah->status_kawin == "Belum Kawin" ? 'selected' : '' }}>Belum Kawin</option>
+                                <option value="Kawin"{{ $nasabah->status_kawin == "Kawin" ? 'selected' : '' }}>Kawin</option>
+                                <option value="Cerai Hidup"{{ $nasabah->status_kawin == "Cerai Hidup" ? 'selected' : '' }}>Cerai Hidup</option>
+                                <option value="Cerai Mati"{{ $nasabah->status_kawin == "Cerai Mati" ? 'selected' : '' }}>Cerai Mati</option>
                             </select>
                             @error('status_kawin')
                             <small class="text-danger">
@@ -150,7 +150,7 @@
                             <select name="kelompok" id="kelompok" class="form-control">
                               <option selected disabled>--Pilih--</option>
                               @foreach ($kelompok as $items)                              
-                              <option value="{{ $items->nama_kelompok == $nasabah->kelompok ? 'selected' : '' }}">{{ $items->nama_kelompok == $nasabah->kelompok ? 'selected' : '' }}</option>                                  
+                              <option value="{{ $items->nama_kelompok}}" {{ $nasabah->kelompok === $items->nama_kelompok ? 'selected' : '' }}>{{ $items->nama_kelompok }}</option>                                  
                               @endforeach
                             </select>
                             @error('kelompok')

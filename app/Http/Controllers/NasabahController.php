@@ -83,4 +83,58 @@ class NasabahController extends Controller
         ];
         return view('nasabah/edit', $data);
     }
+
+    public function update(Request $request, $id){
+        $request->validate([
+            'nik'                => 'required',
+            'nama'               => 'required',
+            'tempat_lahir'       => 'required',
+            'tgl_lahir'          => 'required',
+            'jk'                 => 'required',
+            'alamat'             => 'required',
+            'agama'              => 'required',
+            'status_kawin'       => 'required',
+            'pekerjaan'          => 'required',
+            'pengajuan'          => 'required',
+            'kelompok'          => 'required',
+        ],
+     [      'nik.required'                => 'NIK Tidak Boleh Kosong',
+            'nama.required'               => 'Nama Tidak Boleh Kosong',
+            'tempat_lahir.required'       => 'Tempat Lahir Tidak Boleh Kosong',
+            'tgl_lahir.required'          => 'Tanggal Lahir Tidak Boleh Kosong',
+            'jk.required'                 => 'Jenis Kelamin Belum Dipilih',
+            'alamat.required'             => 'Alamat Tidak Boleh Kosong',
+            'agama.required'              => 'Agama Belum Dipilih',
+            'status_kawin.required'       => 'Status Kawin Belum Dipilih',
+            'pekerjaan.required'          => 'Pekerjaan Tidak Boleh Kosong',
+            'pengajuan.required'          => 'Pengajuan Tidak Boleh Kosong',
+            'kelompok.required'           => 'Kelompok Belum Dipilih',
+
+    ]);
+
+    $nasabah = Nasabah::findOrFail($id);
+    $nasabah->nik           = $request->nik;
+    $nasabah->nama          = $request->nama;
+    $nasabah->tempat_lahir  = $request->tempat_lahir;
+    $nasabah->tgl_lahir     = $request->tgl_lahir;
+    $nasabah->jk            = $request->jk;
+    $nasabah->alamat        = $request->alamat;
+    $nasabah->agama         = $request->agama;
+    $nasabah->status_kawin  = $request->status_kawin;
+    $nasabah->pekerjaan     = $request->pekerjaan;
+    $nasabah->pekerjaan     = $request->pekerjaan;
+    $nasabah->pengajuan     = $request->pengajuan;
+    $nasabah->kelompok      = $request->kelompok;
+    $nasabah->save();
+
+    return redirect()->route('nasabah')->with('success', 'Data Berhasil Diubah');
+
+    }
+
+    public function destroy($id){
+        $nasabah = Nasabah::findOrFail($id);
+        $nasabah->delete();
+
+        return redirect()->route('nasabah')->with('success', 'Data Berhasil Dihapus');
+    }
 }

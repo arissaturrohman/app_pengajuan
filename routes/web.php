@@ -24,6 +24,8 @@ Route::middleware('checkLogin')->group(function(){
     Route::get('nasabah/create',[NasabahController::class, 'create'] )->name('nasabahCreate');
     Route::post('nasabah/store',[NasabahController::class, 'store'] )->name('nasabahStore');
     Route::get('nasabah/edit/{id}',[NasabahController::class, 'edit'] )->name('nasabahEdit');
+    Route::post('nasabah/update/{id}',[NasabahController::class, 'update'] )->name('nasabahUpdate');
+    Route::delete('nasabah/destroy/{id}',[NasabahController::class, 'destroy'] )->name('nasabahDestroy');
     
     // kelompok
     Route::get('kelompok',[KelompokController::class, 'index'] )->name('kelompok');

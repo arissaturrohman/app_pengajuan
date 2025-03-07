@@ -91,7 +91,8 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Klik "Logout" untuk keluar dari aplikasi ini.</div>
+                <div class="modal-body">Klik tombol Logout untuk keluar dari aplikasi ini. <br>
+                    Terimakasih sudah menggunakan aplikasi ini.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="{{ route('logout') }}">Logout</a>
