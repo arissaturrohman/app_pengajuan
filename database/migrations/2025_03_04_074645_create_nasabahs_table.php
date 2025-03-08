@@ -23,8 +23,13 @@ return new class extends Migration
             $table->string('status_kawin');
             $table->string('pekerjaan');
             $table->string('pengajuan');
-            $table->string('kelompok');
+            $table->unsignedBigInteger('kelompok_id');
+            // $table->foreignId('kelompok_id')
+            // ->constrained('kelompoks')
+            // ->onDelete('cascade')
+            // ->onUpdate('cascade');
             $table->timestamps();
+            // $table->foreign('kelompok_id')->references('id')->on('kelompoks')->onDelete('cascade');
         });
     }
 

@@ -46,7 +46,7 @@
                         <td>{{ $item->pekerjaan }}</td>
                         <td>{{ number_format($item->pengajuan) }}</td>
                         <td></td>
-                        <td>{{ $item->kelompok }}</td>
+                        <td>{{ $item->kelompok->nama_kelompok }}</td>
                         <td width="15%">
                             <a href="{{ route('nasabahEdit', $item->id) }}" class="btn btn-sm btn-info"><i class="fas fa-edit"></i> edit</a>                         
                             

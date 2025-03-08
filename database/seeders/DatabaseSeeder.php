@@ -32,19 +32,19 @@ class DatabaseSeeder extends Seeder
             'tgl_lahir'     => '2020-01-02',
             'jk'            => 'Laki-laki',
             'alamat'        => 'bonang demak',
-            'agama'         => 'islam',
-            'status_kawin'  => 'kawin',
+            'agama'         => 'Islam',
+            'status_kawin'  => 'Kawin',
             'pekerjaan'     => 'Swasta',
             'pengajuan'     => '2000000',
-            'kelompok'   => 1,
+            'kelompok_id'      => 1,
         ]);
         
         Kelompok::create([
-            'nama_kelompok' => 'mawar',
+            'nama_kelompok' => 'Mawar',
         ]);
         
         Kelompok::create([
-            'nama_kelompok' => 'melati',
+            'nama_kelompok' => 'Melati',
         ]);
         
         DetailKelompok::create([

@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Nasabah;
 use App\Models\Kelompok;
 use Illuminate\Http\Request;
+use App\Models\DetailKelompok;
+use Illuminate\Support\Facades\DB;
 
 class NasabahController extends Controller
 {
     public function index (){
         $data = [
-            "title"         => "Data Nasabah",
-            "menuNasabah"   => "active",
-            "nasabah"       => Nasabah::with('kelompok')->get(),
-            "kelompok"      => Kelompok::get(),
+            "title"          => "Data Nasabah",
+            "menuNasabah"    => "active",
+            "nasabah"        => Nasabah::with('kelompok')->get(),
+            "kelompok"       => Kelompok::get(),
         ];
         return view('nasabah/index', $data);
     }
@@ -23,6 +25,7 @@ class NasabahController extends Controller
             'title' => 'Tambah Data Nasabah',
             "menuNasabah"   => "active",
             "kelompok"      => Kelompok::get(),
+            
         ];
         return view('nasabah/create', $data);
     }
@@ -39,7 +42,7 @@ class NasabahController extends Controller
             'status_kawin'       => 'required',
             'pekerjaan'          => 'required',
             'pengajuan'          => 'required',
-            'kelompok'          => 'required',
+            'kelompok_id'        => 'required',
         ],
      [      'nik.required'                => 'NIK Tidak Boleh Kosong',
             'nama.required'               => 'Nama Tidak Boleh Kosong',
@@ -51,33 +54,52 @@ class NasabahController extends Controller
             'status_kawin.required'       => 'Status Kawin Belum Dipilih',
             'pekerjaan.required'          => 'Pekerjaan Tidak Boleh Kosong',
             'pengajuan.required'          => 'Pengajuan Tidak Boleh Kosong',
-            'kelompok.required'           => 'Kelompok Belum Dipilih',
+            'kelompok_id.required'        => 'Kelompok Belum Dipilih',
 
     ]);
 
-    $nasabah = new Nasabah;
-    $nasabah->nik           = $request->nik;
-    $nasabah->nama          = $request->nama;
-    $nasabah->tempat_lahir  = $request->tempat_lahir;
-    $nasabah->tgl_lahir     = $request->tgl_lahir;
-    $nasabah->jk            = $request->jk;
-    $nasabah->alamat        = $request->alamat;
-    $nasabah->agama         = $request->agama;
-    $nasabah->status_kawin  = $request->status_kawin;
-    $nasabah->pekerjaan     = $request->pekerjaan;
-    $nasabah->pekerjaan     = $request->pekerjaan;
-    $nasabah->pengajuan     = $request->pengajuan;
-    $nasabah->kelompok      = $request->kelompok;
-    $nasabah->save();
+    // $jumlahKelompok = Nasabah::select('kelompok_id', DB::raw('count(*) as count'))->groupBy('kelompok_id')->havingRaw('count > 2')->get();
+    // $jumlahKelompok = Nasabah::select('kelompok_id', DB::raw('count(*) as count'))->groupBy('kelompok_id')->get();
 
-    return redirect()->route('nasabah')->with('success', 'Data Berhasil Ditambahkan');
+    // $gagal = $jumlahKelompok->firstWhere('count', '>', 2);
 
+    // foreach ($jumlahKelompok as $key) {    
+
+    // if ($key->count == 2) {
+    //     return redirect()->route('nasabah')->with('error', 'Data Kelompok Melebihi 10 Kuota');
+    // } else {
+        
+        $nasabah = new Nasabah;
+        $nasabah->nik           = $request->nik;
+        $nasabah->nama          = $request->nama;
+        $nasabah->tempat_lahir  = $request->tempat_lahir;
+        $nasabah->tgl_lahir     = $request->tgl_lahir;
+        $nasabah->jk            = $request->jk;
+        $nasabah->alamat        = $request->alamat;
+        $nasabah->agama         = $request->agama;
+        $nasabah->status_kawin  = $request->status_kawin;
+        $nasabah->pekerjaan     = $request->pekerjaan;
+        $nasabah->pekerjaan     = $request->pekerjaan;
+        $nasabah->pengajuan     = $request->pengajuan;
+        $nasabah->kelompok_id   = $request->kelompok_id;
+        $nasabah->save();
+        
+        $detail = new DetailKelompok;
+        $detail->nasabah_id       = $nasabah->id;
+        $detail->kelompok_id      = $request->kelompok_id;
+        $detail->save();
+        
+        return redirect()->route('nasabah')->with('success', 'Data Berhasil Ditambahkan');
     }
+
+    // }
+// }
 
     public function edit($id){
         $data = [
             'title' => 'Edit Data Nasabah',
             "menuNasabah"   => "active",
+            // 'nasabah' => DB::table('nasabah')->join('kelompok', 'kelompok.id', '=', 'nasabah.kelompok')->find($id),
             "nasabah"      => Nasabah::with('kelompok')->findOrFail($id),
             "kelompok"      => Kelompok::get(),
         ];
@@ -96,7 +118,7 @@ class NasabahController extends Controller
             'status_kawin'       => 'required',
             'pekerjaan'          => 'required',
             'pengajuan'          => 'required',
-            'kelompok'          => 'required',
+            'kelompok_id'          => 'required',
         ],
      [      'nik.required'                => 'NIK Tidak Boleh Kosong',
             'nama.required'               => 'Nama Tidak Boleh Kosong',
@@ -108,7 +130,7 @@ class NasabahController extends Controller
             'status_kawin.required'       => 'Status Kawin Belum Dipilih',
             'pekerjaan.required'          => 'Pekerjaan Tidak Boleh Kosong',
             'pengajuan.required'          => 'Pengajuan Tidak Boleh Kosong',
-            'kelompok.required'           => 'Kelompok Belum Dipilih',
+            'kelompok_id.required'           => 'Kelompok Belum Dipilih',
 
     ]);
 
@@ -124,7 +146,7 @@ class NasabahController extends Controller
     $nasabah->pekerjaan     = $request->pekerjaan;
     $nasabah->pekerjaan     = $request->pekerjaan;
     $nasabah->pengajuan     = $request->pengajuan;
-    $nasabah->kelompok      = $request->kelompok;
+    $nasabah->kelompok_id   = $request->kelompok_id;
     $nasabah->save();
 
     return redirect()->route('nasabah')->with('success', 'Data Berhasil Diubah');

@@ -29,9 +29,11 @@ Route::middleware('checkLogin')->group(function(){
     
     // kelompok
     Route::get('kelompok',[KelompokController::class, 'index'] )->name('kelompok');
+    Route::get('kelompok/create',[KelompokController::class, 'create'] )->name('kelompokCreate');
+    Route::post('kelompok/store',[KelompokController::class, 'store'] )->name('kelompokStore');
 
     // detail kelompok
-    Route::get('detail',[DetailKelompokController::class, 'index'] )->name('detail');
+    Route::get('detail/{id}',[DetailKelompokController::class, 'index'] )->name('detail');
     
     // pengajuan
     Route::get('pengajuan',[PengajuanController::class, 'index'] )->name('pengajuan');

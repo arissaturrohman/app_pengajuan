@@ -145,15 +145,15 @@
                           </div>
                       </div>
                       <div class="form-group row">
-                        <label for="kelompok" class="col-sm-3 col-form-label">Kelompok</label>
+                        <label for="kelompok_id" class="col-sm-3 col-form-label">Kelompok</label>
                         <div class="col-sm-9">
-                            <select name="kelompok" id="kelompok" class="form-control">
+                            <select name="kelompok_id" id="kelompok_id" class="form-control">
                               <option selected disabled>--Pilih--</option>
                               @foreach ($kelompok as $items)
-                              <option value="{{ $items->nama_kelompok }}">{{ $items->nama_kelompok }}</option>                                  
-                              @endforeach
+                                  <option value="{{ $items->id }}">{{ $items->nama_kelompok }}</option>
+                                  @endforeach
                             </select>
-                            @error('kelompok')
+                            @error('kelompok_id')
                             <small class="text-danger">
                               {{ $message }}
                             </small>
@@ -169,7 +169,6 @@
                   </form>
             </div>
         </div>
-
     </div>
 </div>
 

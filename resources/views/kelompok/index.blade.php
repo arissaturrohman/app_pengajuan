@@ -9,7 +9,7 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">
-            <a href="" class="btn btn-sm btn-outline-primary">Tambah</a>
+            <a href="{{ route('kelompokCreate') }}" class="btn btn-sm btn-outline-primary">Tambah</a>
         </h6>
     </div>
     <div class="card-body">
@@ -25,14 +25,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($kelompok as $item)
+                    @foreach ($jumlahKelompok as $item)
                         
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->nama_kelompok }}</td>
-                        <td>2</td>
+                        <td>{{ $item->jumlah_nasabah }}</td>
                         <td width="15%" class="text-center">
-                            <a href="" class="btn btn-sm btn-warning"><i class="fas fa-eye"></i> detail</a>
+                        <a href="{{ route('detail', $item->id) }}" class="btn btn-sm btn-warning"><i class="fas fa-eye"></i> detail</a>
                         </td>
                         <td width="15%" class="text-center">
                             <a href="" class="btn btn-sm btn-info"><i class="fas fa-edit"></i> edit</a>

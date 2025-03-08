@@ -13,6 +13,6 @@ class Kelompok extends Model
 
     public function nasabah()
     {
-        return $this->hasOne(Nasabah::class);
+        return $this->hasMany(Nasabah::class);
     }
 }
