@@ -24,11 +24,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($detail as $item)
+                    @foreach ($results as $item)
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
-                        <td>{{ $item->nasabah->nama }}</td>
-                        <td>{{ $item->kelompok->nama_kelompok }}</td>
+                        <td>{{ $item->nama }}</td>
+                        <td>{{ $item->nama_kelompok }}</td>
                         
                         <td width="15%">
                             <a href="" class="btn btn-sm btn-info"><i class="fas fa-edit"></i> edit</a>

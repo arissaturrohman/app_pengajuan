@@ -17,6 +17,7 @@ class Nasabah extends Model
         'status_kawin',
         'pekerjaan',
         'pengajuan',
+        'kelompok_id',
     ];
 
     public function detail()
@@ -26,7 +27,7 @@ class Nasabah extends Model
 
     public function kelompok()
     {
-        return $this->belongsTo(Kelompok::class);
+        return $this->belongsTo(Kelompok::class, 'kelompok_id');
     }
 
 }

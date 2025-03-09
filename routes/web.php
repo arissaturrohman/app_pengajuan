@@ -31,6 +31,9 @@ Route::middleware('checkLogin')->group(function(){
     Route::get('kelompok',[KelompokController::class, 'index'] )->name('kelompok');
     Route::get('kelompok/create',[KelompokController::class, 'create'] )->name('kelompokCreate');
     Route::post('kelompok/store',[KelompokController::class, 'store'] )->name('kelompokStore');
+    Route::get('kelompok/edit/{id}',[KelompokController::class, 'edit'] )->name('kelompokEdit');
+    Route::post('kelompok/update/{id}',[KelompokController::class, 'update'] )->name('kelompokUpdate');
+    Route::delete('kelompok/destroy/{id}',[KelompokController::class, 'destroy'] )->name('kelompokDestroy');
 
     // detail kelompok
     Route::get('detail/{id}',[DetailKelompokController::class, 'index'] )->name('detail');

@@ -14,7 +14,10 @@ class NasabahController extends Controller
         $data = [
             "title"          => "Data Nasabah",
             "menuNasabah"    => "active",
-            "nasabah"        => Nasabah::with('kelompok')->get(),
+            "nasabah"        => DB::table('nasabahs')
+            ->join('kelompoks', 'nasabahs.kelompok_id', '=', 'kelompoks.id')
+            ->select('nasabahs.*', 'kelompoks.nama_kelompok')
+            ->get(),
             "kelompok"       => Kelompok::get(),
         ];
         return view('nasabah/index', $data);
