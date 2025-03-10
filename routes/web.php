@@ -42,4 +42,7 @@ Route::middleware('checkLogin')->group(function(){
     Route::get('pengajuan',[PengajuanController::class, 'index'] )->name('pengajuan');
     Route::get('pengajuan/create',[PengajuanController::class, 'create'] )->name('pengajuanCreate');
     Route::post('pengajuan/store',[PengajuanController::class, 'store'] )->name('pengajuanStore');
+    Route::get('pengajuan/edit/{id}',[PengajuanController::class, 'edit'] )->name('pengajuanEdit');
+    Route::post('pengajuan/update/{id}',[PengajuanController::class, 'update'] )->name('pengajuanUpdate');
+    Route::delete('pengajuan/destroy/{id}',[PengajuanController::class, 'destroy'] )->name('pengajuanDestroy');
 });

@@ -14,9 +14,14 @@ class NasabahController extends Controller
         $data = [
             "title"          => "Data Nasabah",
             "menuNasabah"    => "active",
-            "nasabah"        => DB::table('nasabahs')
+            'nasabah' => DB::table('nasabahs')
             ->join('kelompoks', 'nasabahs.kelompok_id', '=', 'kelompoks.id')
-            ->select('nasabahs.*', 'kelompoks.nama_kelompok')
+            ->leftJoin('pengajuans', 'nasabahs.id', '=', 'pengajuans.nasabah_id')
+            ->select(
+                'nasabahs.*', 
+                'kelompoks.nama_kelompok', 
+                DB::raw('COALESCE(pengajuans.realisasi, "Belum ada pengajuan") as status_pengajuan')
+            )
             ->get(),
             "kelompok"       => Kelompok::get(),
         ];
@@ -90,8 +95,7 @@ class NasabahController extends Controller
     public function edit($id){
         $data = [
             'title' => 'Edit Data Nasabah',
-            "menuNasabah"   => "active",
-            // 'nasabah' => DB::table('nasabah')->join('kelompok', 'kelompok.id', '=', 'nasabah.kelompok')->find($id),
+            "menuNasabah"   => "active",            
             "nasabah"      => Nasabah::with('kelompok')->findOrFail($id),
             "kelompok"      => Kelompok::get(),
         ];

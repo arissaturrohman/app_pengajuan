@@ -9,6 +9,6 @@ class Pengajuan extends Model
 {
     public function nasabah()
     {
-        return $this->belongsTo(Nasabah::class);
+        return $this->belongsTo(Nasabah::class, 'nasabah_id');
     }
 }

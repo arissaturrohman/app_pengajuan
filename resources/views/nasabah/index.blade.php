@@ -45,16 +45,17 @@
                         <td>{{ $item->status_kawin }}</td>
                         <td>{{ $item->pekerjaan }}</td>
                         <td>{{ number_format($item->pengajuan) }}</td>
-                        <td></td>
+                       
+                        <td>{{ $item->status_pengajuan }}</td>
                         <td>{{ $item->nama_kelompok }}</td>
                         <td width="15%">
                             <a href="{{ route('nasabahEdit', $item->id) }}" class="btn btn-sm btn-info"><i class="fas fa-edit"></i> edit</a>                         
                             
-                            <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete"><i class="fas fa-trash-alt"></i> hapus</button>
+                            <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete{{ $item->id }}"><i class="fas fa-trash-alt"></i> hapus</button>
                         </td>
                     </tr>
                     <!-- Modal -->
-<div class="modal fade" id="delete" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="delete{{$item->id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header bg-danger text-white">
