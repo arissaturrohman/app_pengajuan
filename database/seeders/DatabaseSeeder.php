@@ -6,6 +6,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Nasabah;
 use App\Models\Kelompok;
+use App\Models\Pengajuan;
 use App\Models\DetailKelompok;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -27,11 +28,11 @@ class DatabaseSeeder extends Seeder
         
         Nasabah::create([
             'NIK'           => '123456789',
-            'nama'          => 'tes',
-            'tempat_lahir'  => 'demak',
+            'nama'          => 'Tes',
+            'tempat_lahir'  => 'Demak',
             'tgl_lahir'     => '2020-01-02',
             'jk'            => 'Laki-laki',
-            'alamat'        => 'bonang demak',
+            'alamat'        => 'Bonang Demak',
             'agama'         => 'Islam',
             'status_kawin'  => 'Kawin',
             'pekerjaan'     => 'Swasta',
@@ -46,10 +47,13 @@ class DatabaseSeeder extends Seeder
         Kelompok::create([
             'nama_kelompok' => 'Melati',
         ]);
-        
-        DetailKelompok::create([
-            'kelompok_id' => 1,
+
+        Pengajuan::create([
             'nasabah_id' => 1,
+            'nama_pasangan' => 'Siti',
+            'pekerjaan_pasangan' => 'Buruh',
+            'realisasi' => '1500000',
+            'keterangan' => 'Disetujui',
         ]);
 
     }

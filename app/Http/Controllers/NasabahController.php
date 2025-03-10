@@ -60,17 +60,6 @@ class NasabahController extends Controller
             'kelompok_id.required'        => 'Kelompok Belum Dipilih',
 
     ]);
-
-    // $jumlahKelompok = Nasabah::select('kelompok_id', DB::raw('count(*) as count'))->groupBy('kelompok_id')->havingRaw('count > 2')->get();
-    // $jumlahKelompok = Nasabah::select('kelompok_id', DB::raw('count(*) as count'))->groupBy('kelompok_id')->get();
-
-    // $gagal = $jumlahKelompok->firstWhere('count', '>', 2);
-
-    // foreach ($jumlahKelompok as $key) {    
-
-    // if ($key->count == 2) {
-    //     return redirect()->route('nasabah')->with('error', 'Data Kelompok Melebihi 10 Kuota');
-    // } else {
         
         $nasabah = new Nasabah;
         $nasabah->nik           = $request->nik;

@@ -25,7 +25,7 @@ Route::middleware('checkLogin')->group(function(){
     Route::post('nasabah/store',[NasabahController::class, 'store'] )->name('nasabahStore');
     Route::get('nasabah/edit/{id}',[NasabahController::class, 'edit'] )->name('nasabahEdit');
     Route::post('nasabah/update/{id}',[NasabahController::class, 'update'] )->name('nasabahUpdate');
-    Route::delete('nasabah/destroy/{id}',[NasabahController::class, 'destroy'] )->name('nasabahDestroy');
+    Route::delete('nasabah/no ga ondestroy/{id}',[NasabahController::class, 'destroy'] )->name('nasabahDestroy');
     
     // kelompok
     Route::get('kelompok',[KelompokController::class, 'index'] )->name('kelompok');
@@ -34,10 +34,12 @@ Route::middleware('checkLogin')->group(function(){
     Route::get('kelompok/edit/{id}',[KelompokController::class, 'edit'] )->name('kelompokEdit');
     Route::post('kelompok/update/{id}',[KelompokController::class, 'update'] )->name('kelompokUpdate');
     Route::delete('kelompok/destroy/{id}',[KelompokController::class, 'destroy'] )->name('kelompokDestroy');
-
+    
     // detail kelompok
     Route::get('detail/{id}',[DetailKelompokController::class, 'index'] )->name('detail');
     
     // pengajuan
     Route::get('pengajuan',[PengajuanController::class, 'index'] )->name('pengajuan');
+    Route::get('pengajuan/create',[PengajuanController::class, 'create'] )->name('pengajuanCreate');
+    Route::post('pengajuan/store',[PengajuanController::class, 'store'] )->name('pengajuanStore');
 });

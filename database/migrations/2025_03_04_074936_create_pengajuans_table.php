@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('pengajuans', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('nasabah_id');
+            $table->string('nama_pasangan');
+            $table->string('pekerjaan_pasangan');
+            $table->string('realisasi');
+            $table->enum('keterangan',['Disetujui','Ditolak']);
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Pengajuan;
 use Illuminate\Database\Eloquent\Model;
 
 class Nasabah extends Model
@@ -28,6 +29,11 @@ class Nasabah extends Model
     public function kelompok()
     {
         return $this->belongsTo(Kelompok::class, 'kelompok_id');
+    }
+    
+    public function pengajuan()
+    {
+        return $this->belongsTo(Pengajuan::class);
     }
 
 }
